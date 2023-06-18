@@ -1,11 +1,9 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Redirect, useHistory } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 import ProductViewModal from './ProductViewModal'
 import Routes from '../routes/Routes'
-
-
 
 
 const Layout = () => {

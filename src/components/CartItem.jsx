@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
-
 import { useDispatch } from 'react-redux'
 import { updateItem, removeItem } from '../redux/shopping-cart/cartItemsSlide'
-
 import numberWithCommas from '../utils/numberWithCommas'
 import { Link } from 'react-router-dom'
 
@@ -29,10 +27,6 @@ const CartItem = props => {
             dispatch(updateItem({...item, quantity: quantity - 1 === 0 ? 1 : quantity - 1}))
         }
     }
-
-    // const updateCartItem = () => {
-    //     dispatch(updateItem({...item, quantity: quantity}))
-    // }
 
     const removeCartItem = () => {
         console.log('removeCartItem')

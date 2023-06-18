@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react'
-
 import { useSelector, useDispatch } from 'react-redux'
-
 import ProductView from './ProductView'
-
 import Button from './Button'
-
 import { remove } from '../redux/product-modal/productModalSlice'
-
 import productData from '../assets/fake-data/products'
-
+// import {CloseIcon} from '@mui/icons-material/Close';
 const ProductViewModal = () => {
 
     const productSlug = useSelector((state) => state.productModal.value)

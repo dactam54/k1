@@ -42,7 +42,7 @@ const Signup = () => {
           <input
             onChange={(e) => setPassword(e.target.value)}
             className=''
-            type=''
+            type='password'
           />
         </div>
         <button className='btn-sign'>

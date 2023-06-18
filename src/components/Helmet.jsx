@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 
 const Helmet = props => {
+    document.title = 'Deli - ' + props.title
 
-    document.title = 'Yolo - ' + props.title
-
-    React.useEffect(() => {
+    useEffect(() => {
         window.scrollTo(0,0)
     }, [])
 

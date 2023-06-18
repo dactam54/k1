@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-
 import { withRouter } from 'react-router'
-
 import { useDispatch } from 'react-redux'
-
 import { addItem } from '../redux/shopping-cart/cartItemsSlide'
 import { remove } from '../redux/product-modal/productModalSlice'
-
 import Button from './Button'
 import numberWithCommas from '../utils/numberWithCommas'
 
@@ -56,12 +52,12 @@ const ProductView = props => {
 
     const check = () => {
         if (color === undefined) {
-            alert('Vui lòng chọn màu sắc!')
+            alert('Vui lòng chọn màu sắc !')
             return false
         }
 
         if (size === undefined) {
-            alert('Vui lòng chọn kích cỡ!')
+            alert('Vui lòng chọn kích cỡ !')
             return false
         }
 

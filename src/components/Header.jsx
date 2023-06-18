@@ -1,7 +1,5 @@
 import React, { useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-
-
 import { useSelector } from 'react-redux'
 import Account from './Account'
 import { UserAuth } from '../context/AuthContext'
@@ -27,10 +25,10 @@ const mainNav = [
 
 const Header = () => {
     const countItem = useSelector((state) => state.cartItems.value)
-    const { pathname } = useLocation()
-    const activeNav = mainNav.findIndex(e => e.path === pathname)
     const headerRef = useRef(null)
+    const { pathname } = useLocation()
     const { user } = UserAuth()
+    const activeNav = mainNav.findIndex(e => e.path === pathname)
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
