@@ -39,10 +39,16 @@ const Signin = () => {
         </div>
 
         <button className='btn-sign'>
-          Sign In
+         Đăng nhập
         </button>
 
-          <p>Quên mật khẩu</p>
+        <p className=''>
+            
+            <Link to='/forgetpassword'>
+              Quên mật khẩu
+            </Link>
+          </p>
+
           <p className=''>
             Bạn chưa có tài khoản?{' '}
             <Link to='/signup' className='sign'>

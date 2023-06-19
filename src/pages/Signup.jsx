@@ -46,7 +46,7 @@ const Signup = () => {
           />
         </div>
         <button className='btn-sign'>
-          Sign Up
+          Đăng kí
         </button>
         
         <p className=''>

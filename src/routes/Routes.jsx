@@ -7,11 +7,14 @@ import Catalog from '../pages/Catalog'
 import Cart from '../pages/Cart'
 import Product from '../pages/Product'
 import Accessories from '../pages/Accessories'
-// import Contact from '../pages/Contact'
+
 import Home from '../pages/Home'
 import Signup from '../pages/Signup'
 
 import Footer from '../components/Footer'
+import ForgetPassword from '../pages/ForgetPassword'
+import Profile from '../pages/Profile'
+
 
 const Routes = () => {
 
@@ -27,6 +30,10 @@ const Routes = () => {
         {/* <Route path='/contact' component={Contact} /> */}
         <Route path='/contact' component={Footer} />
         <Route path='/signup' component={Signup} />
+        <Route path='/forgetpassword' component={ForgetPassword}/>
+
+        <Route path='/profile' component={Profile}/>
+        
         </Switch>
     )
 }

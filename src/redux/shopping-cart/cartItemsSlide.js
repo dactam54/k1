@@ -12,7 +12,9 @@ export const cartItemsSlice = createSlice({
     reducers: {
         addItem: (state, action) => {
             const newItem = action.payload
+
             const duplicate = state.value.filter(e => e.slug === newItem.slug && e.color === newItem.color && e.size === newItem.size)
+
             if (duplicate.length > 0) {
                 state.value = state.value.filter(e => e.slug !== newItem.slug || e.color !== newItem.color || e.size !== newItem.size)
                 state.value = [...state.value, {
@@ -31,9 +33,13 @@ export const cartItemsSlice = createSlice({
             }
             localStorage.setItem('cartItems', JSON.stringify(state.value.sort((a, b) => a.id > b.id ? 1 : (a.id < b.id ? -1 : 0))))
         },
+
+
         updateItem: (state, action) => {
             const newItem = action.payload
+
             const item = state.value.filter(e => e.slug === newItem.slug && e.color === newItem.color && e.size === newItem.size)
+
             if (item.length > 0) {
                 state.value = state.value.filter(e => e.slug !== newItem.slug || e.color !== newItem.color || e.size !== newItem.size)
                 state.value = [...state.value, {
@@ -47,15 +53,18 @@ export const cartItemsSlice = createSlice({
             }
             localStorage.setItem('cartItems', JSON.stringify(state.value.sort((a, b) => a.id > b.id ? 1 : (a.id < b.id ? -1 : 0))))
         },
+        
         removeItem: (state, action) => {
             const item = action.payload
             state.value = state.value.filter(e => e.slug !== item.slug || e.color !== item.color || e.size !== item.size)
             localStorage.setItem('cartItems', JSON.stringify(state.value.sort((a, b) => a.id > b.id ? 1 : (a.id < b.id ? -1 : 0))))
-        },
+        },  
+
+       
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { addItem, removeItem, updateItem } = cartItemsSlice.actions
+export const { addItem, removeItem, updateItem} = cartItemsSlice.actions
 
 export default cartItemsSlice.reducer

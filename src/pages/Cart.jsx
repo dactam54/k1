@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-import { useSelector } from 'react-redux'
-import { Link, useHistory } from 'react-router-dom'
+import {  useSelector } from 'react-redux'
+import { Link} from 'react-router-dom'
 
 import Helmet from '../components/Helmet'
 import CartItem from '../components/CartItem'
@@ -11,9 +11,13 @@ import productData from '../assets/fake-data/products'
 import numberWithCommas from '../utils/numberWithCommas'
 import { UserAuth } from '../context/AuthContext'
 
+
+
 const Cart = () => {
 
     const cartItems = useSelector((state) => state.cartItems.value)
+
+    
 
     const [cartProducts, setCartProducts] = useState(productData.getCartItemsInfo(cartItems))
 
@@ -24,11 +28,12 @@ const Cart = () => {
 
     const { user } = UserAuth()
 
+    
+
 console.log(user)
 
 
-
-
+console.log(cartProducts)
     useEffect(() => {
         setCartProducts(productData.getCartItemsInfo(cartItems))
         setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * Number(item.price)), 0))
@@ -65,13 +70,13 @@ console.log(user)
                        
 
                        
-                        <Button size="block"  >
-                       
+                        <Button size="block" >
+                        {/* onclick={handleOrder()} */}
                         Đặt hàng
                        
                         
                         </Button>
-                        
+                      
                         
 
                         <Link to="/catalog">

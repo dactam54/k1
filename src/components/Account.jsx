@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
 import '../sass/css/account.css'
-
+import { Link } from 'react-router-dom';
 
 
 const Account = () => {
@@ -14,6 +14,7 @@ const Account = () => {
     try {
       await logout();
       history.push('/');
+      
       console.log('You are logged out')
     } catch (e) {
       console.log(e.message);
@@ -26,6 +27,10 @@ const Account = () => {
       <button onClick={handleLogout} className='btn-logout'>
         Logout
       </button>
+
+      <Link to='/profile' >
+           <button className='btn-logout' >Profile</button>
+          </Link>
     </div>
   );
 };
