@@ -6,13 +6,15 @@ import {
   onAuthStateChanged,
   sendPasswordResetEmail,
   updateEmail,
-  updatePassword
+  updatePassword,
+  
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
 const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+  
   const [user, setUser] = useState();
 
   const createUser = (email, password) => {
@@ -49,10 +51,11 @@ export const AuthContextProvider = ({ children }) => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [auth]);
 
   return (
-    <UserContext.Provider value={{ createUser, user, logout, signIn, resetPassword,updateEmail1,updatePassword1 }}>
+    <UserContext.Provider value={{ createUser, user, logout, signIn, resetPassword,  updateEmail1,updatePassword1}}>
+   
       {children}
     </UserContext.Provider>
   );

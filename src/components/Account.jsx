@@ -24,13 +24,15 @@ const Account = () => {
   return (
     <div className='container'>
       <p>{user && user.email && (user.email).slice(0,(user.email.indexOf("@gmail.com"))) }</p>
-      <button onClick={handleLogout} className='btn-logout'>
-        Logout
-      </button>
+      
 
       <Link to='/profile' >
            <button className='btn-logout' >Profile</button>
           </Link>
+
+          <button onClick={handleLogout} className='btn-logout'>
+        Logout
+      </button>
     </div>
   );
 };

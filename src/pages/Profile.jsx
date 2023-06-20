@@ -1,26 +1,24 @@
 import React, { useRef, useState } from 'react'
-import { Link,useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
+import { Alert } from "react-bootstrap"
 
-import {  Alert } from "react-bootstrap"
 import '../sass/css/signin.css'
 // import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Profile = () => {
+  const { user,updateEmail1, updatePassword1 } = UserAuth()
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const password2Ref = useRef();
 
-  const emailRef =useRef();
-  const passwordRef =useRef();
-  const password2Ref =useRef();
-  const history =useHistory();
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("");
+  const history = useHistory();
+  
+  const emailDefault = user && user.email;
 
-const [error,setError]=useState("");
-
-const {user,updateEmail1,updatePassword1} =UserAuth()
-
-const emailDefault = user && user.email;
-
-
-  const handleSubmit=(e)=>{
+  function changePassword(e){
     e.preventDefault();
     console.log('submit')
 
@@ -29,57 +27,67 @@ const emailDefault = user && user.email;
     }
 
     const promises =[];
+    console.log(promises)
+    setLoading(true)
     setError("")
 
     if (emailRef.current.value !== user.email) {
       promises.push(updateEmail1(emailRef.current.value))
     }
 
-    if (passwordRef.current.value) {
+    if (passwordRef.current.value && passwordRef.current.value !==" ") {
       promises.push(updatePassword1(passwordRef.current.value))
     }
 
 
     Promise.all(promises)
     .then(() => {
-      history.push("/")
+      
+      setError("cập nhật thành công")
+      setTimeout(() => {
+        history.push("/")
+      },3000);
     })
     .catch(() => {
       setError("cập nhật thất bại")
+    }).finally(() => {
+      setLoading(false)
     })
-    
+
   }
+
+
 
   return (
 
-    <form className='form'  onSubmit={handleSubmit}>
+    <form className='form' onSubmit={changePassword}>
       <h1 className="title">Cập nhật thông tin</h1>
 
       <div className='input'>
-      {error && <Alert variant="danger">{error}</Alert>}
-        <label className='' >Email </label>
-        <input  className='' type='email' ref={emailRef}  defaultValue={emailDefault} />
+        {error && <Alert variant="danger">{error}</Alert>}
+        <label  >Email </label>
+        <input  type='email' ref={emailRef} defaultValue={emailDefault} />
       </div>
 
       <div className='input'>
-        <label className='' >Password</label>
-        <input  className='' ref={passwordRef} type='password' />
+        <label  >Password</label>
+        <input  ref={passwordRef} type='password' placeholder='Nhập mật khẩu mới' />
       </div>
 
       <div className='input'>
-        <label className='' > Password Confirmation</label>
-        <input  className='' ref={password2Ref} type='password' />
+        <label  > Password Confirmation</label>
+        <input  ref={password2Ref} type='password' placeholder='Nhập lại mật khẩu mới' />
       </div>
 
-      <button className='btn-sign'>
+      <button className='btn-sign' disabled={loading}>
         Cập nhật
-        </button>
-        <p className=''>
-           
-            <Link to='/' >
-              Hủy
-            </Link>
-          </p>
+      </button>
+      <p >
+
+        <Link to='/' >
+          Hủy
+        </Link>
+      </p>
 
 
 

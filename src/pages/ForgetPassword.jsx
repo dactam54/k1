@@ -16,7 +16,7 @@ const ForgetPassword = () => {
     try {
       
       await resetPassword(emailRef.current.value)
-      setMessage("vui long kiểm tra hòm thư đến")
+      setMessage("Vui lòng kiểm tra hòm thư email")
       
     } catch {
       console.log("Failed to reset password")
@@ -32,7 +32,7 @@ const ForgetPassword = () => {
         <div className='input'>
         {message && <Alert variant="success">{message}</Alert>}
           <label className=''>Email </label>
-          <input className='' type='email' ref={emailRef} required />
+          <input className='' type='email' ref={emailRef} required placeholder='Nhập Email'/>
         </div>
 
         <button className='btn-sign'>

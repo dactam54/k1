@@ -34,6 +34,8 @@ const Signup = () => {
             onChange={(e) => setEmail(e.target.value)}
             className=''
             type='email'
+            required
+            placeholder='Nhập Email'
           />
         </div>
 
@@ -43,6 +45,7 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
             className=''
             type='password'
+            placeholder='Nhập mật khẩu '
           />
         </div>
         <button className='btn-sign'>

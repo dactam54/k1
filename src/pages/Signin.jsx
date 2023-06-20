@@ -30,12 +30,12 @@ const Signin = () => {
 
         <div className='input'>
           <label className=''>Email </label>
-          <input onChange={(e) => setEmail(e.target.value)} className='' type='email' />
+          <input onChange={(e) => setEmail(e.target.value)} className='' type='email' placeholder='Nhập Email' required />
         </div>
 
         <div className='input'>
           <label className=''>Password</label>
-          <input onChange={(e) => setPassword(e.target.value)} className='' type='password' />
+          <input onChange={(e) => setPassword(e.target.value)} className='' type='password' placeholder='Nhập mật khẩu '/>
         </div>
 
         <button className='btn-sign'>
